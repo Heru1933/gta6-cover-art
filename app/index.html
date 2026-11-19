@@ -3,20 +3,116 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Coast — GTA-Style Cover Maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VC</span>
+    <span class="brand-name">VICE COAST <em>cover studio</em></span>
+  </div>
+  <p class="tagline">Your photo. Your caption. A poster cover in seconds — 100% offline, nothing uploads.</p>
+</header>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+  <section class="controls" aria-label="Cover controls">
+    <h1>Make your cover</h1>
+
+    <fieldset class="group">
+      <legend>1 · Photos</legend>
+      <label class="file-btn">Add photos from your machine
+        <input id="photos" type="file" accept="image/*" multiple>
+      </label>
+      <p class="hint">Up to 4 photos. Click a panel in the preview, then pick which photo fills it.</p>
+      <div id="photoTray" class="tray" aria-label="Loaded photos"></div>
+      <div class="row">
+        <button id="sampleBtn" type="button" class="ghost">Load sample photos</button>
+        <button id="shuffleBtn" type="button" class="ghost">Shuffle panels</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>2 · Layout &amp; grade</legend>
+      <label>Layout
+        <select id="layout">
+          <option value="hero">Hero + three panels</option>
+          <option value="grid">Four-panel grid</option>
+          <option value="strip">Comic strip · three columns</option>
+          <option value="snapshots">Full-bleed + tilted snapshots</option>
+        </select>
+      </label>
+      <div id="gradeRow" class="chips" role="group" aria-label="Colour grade">
+        <button type="button" data-grade="sunset" class="chip active">Sunset</button>
+        <button type="button" data-grade="neon" class="chip">Neon Nights</button>
+        <button type="button" data-grade="miami" class="chip">Miami Vice</button>
+        <button type="button" data-grade="dusk" class="chip">Dusk Noir</button>
+      </div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain + vignette</label>
+      <label class="check"><input id="artwork" type="checkbox" checked> Sunset skyline art (sun, palms, skyline)</label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>3 · Selected panel</legend>
+      <p class="hint" id="panelLabel">Panel 1 · click any panel in the preview to select it.</p>
+      <label>Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label>Zoom <span id="zoomVal">100%</span>
+        <input id="zoom" type="range" min="100" max="260" value="100">
+      </label>
+      <label>Move left / right
+        <input id="panX" type="range" min="-50" max="50" value="0">
+      </label>
+      <label>Move up / down
+        <input id="panY" type="range" min="-50" max="50" value="0">
+      </label>
+      <p class="hint">Tip: drag on a panel to move the photo, scroll over it to zoom.</p>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>4 · Caption</legend>
+      <label>Title
+        <input id="caption" type="text" maxlength="28" value="VICE CITY NIGHTS">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="40" value="One last ride down Ocean Drive">
+      </label>
+      <label>Title size <span id="titleSizeVal">100%</span>
+        <input id="titleSize" type="range" min="60" max="150" value="100">
+      </label>
+      <label>Title position
+        <select id="titlePos">
+          <option value="bottom">Bottom banner</option>
+          <option value="top">Top banner</option>
+        </select>
+      </label>
+      <div id="styleRow" class="chips" role="group" aria-label="Title style">
+        <button type="button" data-style="sunset" class="chip active">Sunset fill</button>
+        <button type="button" data-style="neon" class="chip">Neon outline</button>
+        <button type="button" data-style="white" class="chip">Clean white</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>5 · Export</legend>
+      <label>Post size
+        <select id="size">
+          <option value="1920x1080">Landscape · 1920 × 1080</option>
+          <option value="1080x1080">Square · 1080 × 1080</option>
+          <option value="1080x1350">Portrait · 1080 × 1350</option>
+        </select>
+      </label>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+
+  <section class="stage" aria-label="Cover preview">
+    <div class="canvas-wrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    </div>
+    <p class="stage-hint">Live preview — drag a panel to reposition its photo · scroll to zoom · click to select.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>

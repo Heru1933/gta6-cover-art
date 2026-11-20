@@ -8,7 +8,11 @@
 // multi-panel poster cover — hero + three panels, grid, comic strip or tilted
 // snapshots, in a sunset / neon / Miami / dusk grade, with vector sunset
 // skyline art drawn in code — and exports it as a PNG in 1080x1080,
-// 1080x1350 or 1920x1080. Its two sample photos (app/samples/) were made for
+// 1080x1350, 1920x1080 or story 1080x1920. Round 3 adds the nine-panel
+// poster layout, a distinct crop per panel with a safe-zone anchor, poster
+// treatment (ink borders + halftone), a richer title block (layered skyline,
+// sun reflection, badge ribbon, five-star heat meter), polaroid snapshots
+// and undo/redo in the editor. Its two sample photos (app/samples/) were made for
 // make.fun with an image model and are free to use. Put 3 or 4 PNG or JPEG
 // screenshots in screenshots/ (the first by name is the cover) and run it.
 //

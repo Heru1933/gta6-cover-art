@@ -1,3 +1,5 @@
+// Round 3 note: this vendored make.fun library is unchanged; the entry's
+// own round-3 code lives in app/src/ (cover.js, main.js, state.js, shots.js).
 // make.fun's browser app library for Node 22 (gta6-cover-art-01's: sdk/game/makefun-game.ts with
 // game/ read as app/): one file, the Node standard library only, erasable
 // TypeScript, so it runs as-is under `node main.ts` with no flags, no build and no install. Copy it to

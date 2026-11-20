@@ -29,6 +29,11 @@
         <button id="sampleBtn" type="button" class="ghost">Load sample photos</button>
         <button id="shuffleBtn" type="button" class="ghost">Shuffle panels</button>
       </div>
+      <div class="row">
+        <button id="undoBtn" type="button" class="ghost" disabled>Undo</button>
+        <button id="redoBtn" type="button" class="ghost" disabled>Redo</button>
+      </div>
+      <p class="hint">Undo / redo work with Ctrl+Z / Ctrl+Y too — every change can be taken back.</p>
     </fieldset>
 
     <fieldset class="group">
@@ -39,6 +44,7 @@
           <option value="grid">Four-panel grid</option>
           <option value="strip">Comic strip · three columns</option>
           <option value="snapshots">Full-bleed + tilted snapshots</option>
+          <option value="nine">Nine-panel poster · 3 × 3</option>
         </select>
       </label>
       <div id="gradeRow" class="chips" role="group" aria-label="Colour grade">
@@ -49,6 +55,7 @@
       </div>
       <label class="check"><input id="grain" type="checkbox" checked> Film grain + vignette</label>
       <label class="check"><input id="artwork" type="checkbox" checked> Sunset skyline art (sun, palms, skyline)</label>
+      <label class="check"><input id="poster" type="checkbox" checked> Poster treatment (ink borders + halftone dots)</label>
     </fieldset>
 
     <fieldset class="group">
@@ -66,7 +73,7 @@
       <label>Move up / down
         <input id="panY" type="range" min="-50" max="50" value="0">
       </label>
-      <p class="hint">Tip: drag on a panel to move the photo, scroll over it to zoom.</p>
+      <p class="hint">Tip: drag on a panel to move the photo, scroll over it to zoom. Every panel gets its own distinct crop — the same photo never repeats identically.</p>
     </fieldset>
 
     <fieldset class="group">
@@ -91,6 +98,7 @@
         <button type="button" data-style="neon" class="chip">Neon outline</button>
         <button type="button" data-style="white" class="chip">Clean white</button>
       </div>
+      <p class="hint">The title block adds a five-star heat meter and a VICE COAST badge ribbon.</p>
     </fieldset>
 
     <fieldset class="group">
@@ -100,6 +108,7 @@
           <option value="1920x1080">Landscape · 1920 × 1080</option>
           <option value="1080x1080">Square · 1080 × 1080</option>
           <option value="1080x1350">Portrait · 1080 × 1350</option>
+          <option value="1080x1920">Story · 1080 × 1920</option>
         </select>
       </label>
       <button id="export" type="button" class="primary">Export PNG</button>

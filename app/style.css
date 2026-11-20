@@ -54,6 +54,8 @@ button.primary { background: linear-gradient(90deg, var(--orange), var(--pink));
   color: #fff; font-size: 16px; padding: 13px; border: 0;
   box-shadow: 0 6px 22px rgba(255, 122, 24, .4); }
 button.ghost { flex: 1; font-size: 13px; }
+button:disabled { opacity: .45; cursor: default; }
+button:disabled:hover { border-color: var(--line); }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { padding: 7px 10px; font-size: 13px; border-radius: 999px; }
 .chip.active { background: var(--pink); border-color: var(--pink); color: #fff; }
